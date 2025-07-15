@@ -1,0 +1,13 @@
+<div *ngFor="let tc of teachersClasses">
+    <div class="odeljenja">
+      <div class="labels">
+        <label>Predmet: {{teacher?.subject?.name || ""}}</label>
+        <label>Odeljenje: {{tc.cl.grade}}-{{tc.cl.number}}</label>
+      </div>
+      <div class="buttons">
+        <button (click)="AddLesson(tc)">Upiši čas</button>
+        <button (click)="ViewStudents(tc)">Učenici</button>
+      </div>
+    </div>
+  </div>
+  

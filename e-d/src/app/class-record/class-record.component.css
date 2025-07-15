@@ -1,0 +1,116 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f4f7f9;
+    margin: 0;
+    padding: 30px; /* Minimalno smanjen padding */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    justify-content: space-between;
+  }
+  
+  .main-container {
+    display: flex;
+    gap: 40px; /* Blago smanjen razmak između kolona */
+    width: 100%;
+    flex-grow: 1;
+  }
+  
+  .left-container, .right-container {
+    flex: 1;
+  }
+  
+  h1, h3 {
+    text-align: center;
+    font-size: 24px; /* Blago smanjen font */
+    color: #2c3e50;
+    margin-bottom: 25px; /* Smanjen razmak */
+  }
+  
+  label {
+    display: block;
+    font-weight: 700;
+    color: #34495e;
+    font-size: 18px; /* Minimalno smanjen font */
+    margin-bottom: 8px; /* Blago smanjen razmak */
+  }
+  
+  span, input, textarea, select {
+    display: block;
+    width: 100%;
+    padding: 12px; /* Blago smanjen padding */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 17px; /* Minimalno smanjen font */
+    background: #f9fafc;
+    margin-bottom: 12px; /* Smanjen razmak između redova */
+  }
+  
+  textarea {
+    resize: none;
+  }
+  
+  button {
+    display: block;
+    width: 100%;
+    padding: 12px; /* Blago smanjen padding */
+    background:  #2ecc71;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 17px; /* Blago smanjen font */
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 12px;
+  }
+  
+  button:hover {
+    background: #27ae60;
+  }
+  
+  .right-container button {
+    margin-bottom: 20px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 15px; /* Blago smanjen padding */
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 17px; /* Smanjen font */
+  }
+  
+  th {
+    background: #2ecc71;
+    color: white;
+  }
+  
+  tr:nth-child(even) {
+    background: #f8f9fa;
+  }
+  
+  .save-button {
+    width: 320px; /* Minimalno smanjena širina */
+    padding: 16px; /* Smanjen padding */
+    font-size: 20px; /* Blago smanjen font */
+    font-weight: 700;
+    background: #2ecc71;
+    margin-top: 25px; /* Blago smanjen razmak */
+    text-align: center;
+    align-self: center;
+  }
+  
+  .save-button:hover {
+    background: #27ae60;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }

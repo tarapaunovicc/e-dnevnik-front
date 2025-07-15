@@ -1,0 +1,44 @@
+<div class="main-container">
+  <div class="left-container">
+    <h3>{{ this.lesson?.teacher?.subject?.name }}</h3>
+    <table class="grades-table">
+      <thead>
+        <tr>
+          <th>Učenik</th>
+          <th>Ocene</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of students">
+          <td>{{ student.firstname }} {{ student.lastname }}</td>
+          <td>
+            {{ student?.grades?.length ? getTeacherGrades(student).join(', ') : '-' }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- Desna strana sa formom -->
+  <div class="right-container">
+    <h3>Upiši novu ocenu</h3>
+    
+    <div class="form-section">
+      <label for="studentSelect">Izaberite studenta:</label>
+      <select id="studentSelect" [(ngModel)]="selectedStudent">
+        <option *ngFor="let student of presentStudents" [ngValue]="student">
+          {{ student.firstname }} {{ student.lastname }}
+        </option>
+      </select>
+      
+      <label for="gradeSelect">Izaberite ocenu:</label>
+      <select id="gradeSelect" [(ngModel)]="selectedGrade">
+        <option *ngFor="let grade of [1, 2, 3, 4, 5]" [value]="grade">{{ grade }}</option>
+      </select>
+
+      <button (click)="addNewGrade()">Upiši ocenu</button>
+    </div>
+  </div>
+</div>
+

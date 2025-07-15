@@ -1,0 +1,107 @@
+/* Stilizovanje celog headera */
+header {
+  background-color: #2B0001;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+  height: 80px;
+}
+
+/* Stilizacija kontejnera */
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+/* Stilizacija logo slike */
+.logo {
+  height: 90px; /* Prilagodi veličinu slike */
+  margin-right: 10px;
+}
+
+/* Grupisanje levog dela (logo + dugmadi) */
+.left-section {
+  display: flex;
+  align-items: center;
+}
+
+/* Grupa za sliku i tekst */
+.school-name {
+  color: white;
+  text-align: left;
+  margin-left: 10px; /* Razmak između slike i teksta */
+  padding-top: 0px;
+  padding-bottom: 15px;
+  margin-top: 24px;
+  font-family: "Brush Script MT";
+  font-size: 34px;
+
+}
+
+.school-name span {
+  display: block; /* Svaka linija ide u svoj red */
+  font-size: 30px;
+  font-weight: 200;
+  padding-bottom: 0px;
+  padding-right: 30px;
+}
+
+/* Stilizacija dugmadi */
+button {
+  background-color: #2B0001;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  margin: 0 5px;
+  margin-top: 55px;
+}
+
+button:hover {
+  background-color: #300506;
+}
+
+/* Desni deo */
+.right-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+/* Lokacija */
+.location {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.location span {
+  color: white;
+  font-size: 16px;
+}
+
+.logout-button {
+  background-color: #2B0001;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  padding-bottom:0px;
+  margin-top:10px;
+}
+
+.logout-button:hover {
+  background-color: #300506;
+}
+
+.pin{
+  height: 30px;
+}

@@ -1,0 +1,17 @@
+<h2>Login</h2>
+<div class="ccc">
+  <form action="/login" method="POST">
+    <label for="username">Username:</label><br>
+    <input type="text" id="username" name="username" [(ngModel)] = "user.username" required><br><br>
+    
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password" [(ngModel)] = "user.password" required><br><br>
+    <ng-container matSuffix>
+      <button type="button" mat-icon-button (click)="showPassword = !showPassword" tabindex="-1">
+      </button>
+    </ng-container>
+    <button type="submit" (click) = "submit()">Login</button>
+    
+    
+  </form>
+</div>

@@ -1,0 +1,26 @@
+<div class="ccc">
+    <h1>Upis časa</h1>
+      <div>
+        <label for="studentName">Ime učenika:</label>
+        <span id="studentName">{{student.firstname}} {{student.lastname}} {{student.studentClass.grade}}-{{student.studentClass.number}}</span>
+      </div>
+
+      <div>
+        <label for="subjectName">Naziv predmeta:</label>
+        <span id="subjectName">{{teacher ? teacher.subject.name : default}}</span>
+      </div>
+    
+      <div>
+        <label for="date">Datum:</label>
+        <!-- <input type="date" id="date" name="date" [value]="todayDate"> -->
+        <span id="date">{{ todayDate }}</span>
+
+    </div>
+    
+      <div>
+        <label for="classOrdinalNumber">Redni broj časa:</label>
+        <span id="classOrdinalNumber"> {{lesson ? lesson.classOrdinalNumber : defaultClass}}</span>
+      </div>
+  
+      <button type="submit" (click)="submit()">Sačuvaj</button>
+    </div>

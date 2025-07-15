@@ -1,0 +1,32 @@
+<table>
+    <thead>
+      <tr>
+        <th>Predmet</th>
+        <th>Ocene</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let subjectName of getSubjectNames()">
+        <td>{{ subjectName }}</td>
+        <td>
+          <span *ngFor="let grade of uniqueSubjects[subjectName]; let last = last">
+            {{ grade }}<span *ngIf="!last">, </span>
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div>
+    <label for="gradeSelect">Odaberite ocenu:</label>
+    <select id="gradeSelect" [(ngModel)]="selectedGrade">
+      <option *ngFor="let grade of [1, 2, 3, 4, 5]" [value]="grade">{{ grade }}</option>
+    </select>
+  </div>
+  
+  <div>
+    <button (click)="goToStudentsPage()">
+    </button>
+  
+    <button (click)="addNewGrade()">Dodaj ocenu</button>
+  </div>

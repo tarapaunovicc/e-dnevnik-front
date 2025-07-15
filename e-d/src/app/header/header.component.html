@@ -1,0 +1,29 @@
+<header>
+  <div class="container">
+    <!-- Leva strana -->
+    <div class="left-section">
+      <img src="assets/skola-slika.png" alt="Logo" class="logo">
+      <div class="school-name">
+        <span>Osnovna škola</span>
+        <span>"Jovan Jovanović Zmaj"</span>
+      </div>
+      <button (click)="goToUserPage()">Početna stranica</button>
+      <div *ngIf="hasClass()">
+        <button (click)="openMyClass()">Moje odeljenje</button>
+      </div>
+    </div>
+
+    <!-- Desna strana -->
+    <div class="right-section">
+      <div class="location">
+        <img src="assets/whitelocation.png" alt="Logo" class="pin">
+        <span>Bulevar kralja Aleksandra 251, Beograd</span>
+      </div>
+      <button class="logout-button" (click)="logout()">Logout</button>
+    </div>
+  </div>
+
+  <div *ngIf="message" class="header-notification">
+    {{ message }}
+  </div>
+</header>

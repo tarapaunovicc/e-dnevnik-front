@@ -1,0 +1,83 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Stil za kontejner */
+.ccc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px; /* Dodavanje paddinga oko sadržaja */
+    background-color: #ffffff; /* Pozadina kontejnera */
+    border: 1px solid #ddd; /* Okvir oko kontejnera */
+    border-radius: 8px; /* Zaobljene ivice kontejnera */
+}
+
+/* Stil za naslov */
+h1 {
+    text-align: center; /* Centriranje naslova */
+    margin-bottom: 20px; /* Razmak ispod naslova */
+    font-size: 1.3em; /* Veličina fonta za naslov */
+    color: #333333; /* Boja naslova */
+}
+
+/* Stil za svaki div unutar kontejnera */
+div:not(.labels) {
+    margin-bottom: 20px; /* Razmak između elemenata */
+}
+
+/* Stil za labelu */
+label {
+    display: block;
+    margin-bottom: 10px; /* Razmak ispod labela */
+    font-weight: bold;
+    font-size: 1em; /* Veličina fonta za labelu */
+    color: #333333; /* Boja labela */
+}
+
+/* Stil za span za ime učenika i naziv predmeta */
+#studentName, #subjectName, #date {
+    display: block;
+    padding: 12px; /* Padding unutar span */
+    border: 1px solid #ddd; /* Okvir oko span */
+    border-radius: 4px; /* Zaobljene ivice */
+    background-color: #f9f9f9; /* Pozadina */
+    font-size: 1em; /* Veličina fonta za span */
+}
+
+/* Stil za input */
+input {
+    display: block;
+    width: 100%;
+    padding: 12px; /* Padding unutar input polja */
+    box-sizing: border-box; /* Uključuje padding i border u ukupnu širinu */
+    border: 1px solid #ddd; /* Okvir oko polja */
+    border-radius: 4px; /* Zaobljene ivice */
+    font-size: 1em; /* Veličina fonta za input */
+}
+
+/* Stil za dugme */
+button {
+    display: inline-block; /* Dugme se ne proteže na celu širinu */
+    padding: 12px 24px; /* Padding unutar dugmeta */
+    font-size: 1em; /* Veličina fonta za dugme */
+    color: #ffffff; /* Boja teksta na dugmetu */
+    background-color: #4CAF50; /* Pozadina dugmeta */
+    border: none;
+    border-radius: 5px; /* Zaobljene ivice dugmeta */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Stil za dugme prilikom hover efekta */
+button:hover {
+    background-color: #45a049; /* Pozadina dugmeta prilikom hover efekta */
+}
