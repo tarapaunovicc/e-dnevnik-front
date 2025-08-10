@@ -1,116 +1,79 @@
-body {
-    font-family: 'Poppins', sans-serif;
-    background: #f4f7f9;
-    margin: 0;
-    padding: 30px; /* Minimalno smanjen padding */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100vh;
-    justify-content: space-between;
-  }
-  
-  .main-container {
-    display: flex;
-    gap: 40px; /* Blago smanjen razmak između kolona */
-    width: 100%;
-    flex-grow: 1;
-  }
-  
-  .left-container, .right-container {
-    flex: 1;
-  }
-  
-  h1, h3 {
-    text-align: center;
-    font-size: 24px; /* Blago smanjen font */
-    color: #2c3e50;
-    margin-bottom: 25px; /* Smanjen razmak */
-  }
-  
-  label {
-    display: block;
-    font-weight: 700;
-    color: #34495e;
-    font-size: 18px; /* Minimalno smanjen font */
-    margin-bottom: 8px; /* Blago smanjen razmak */
-  }
-  
-  span, input, textarea, select {
-    display: block;
-    width: 100%;
-    padding: 12px; /* Blago smanjen padding */
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    font-size: 17px; /* Minimalno smanjen font */
-    background: #f9fafc;
-    margin-bottom: 12px; /* Smanjen razmak između redova */
-  }
-  
-  textarea {
-    resize: none;
-  }
-  
-  button {
-    display: block;
-    width: 100%;
-    padding: 12px; /* Blago smanjen padding */
-    background:  #2ecc71;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-size: 17px; /* Blago smanjen font */
-    font-weight: 700;
-    cursor: pointer;
-    margin-top: 12px;
-  }
-  
-  button:hover {
-    background: #27ae60;
-  }
-  
-  .right-container button {
-    margin-bottom: 20px;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  th, td {
-    padding: 15px; /* Blago smanjen padding */
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-    font-size: 17px; /* Smanjen font */
-  }
-  
-  th {
-    background: #2ecc71;
-    color: white;
-  }
-  
-  tr:nth-child(even) {
-    background: #f8f9fa;
-  }
-  
-  .save-button {
-    width: 320px; /* Minimalno smanjena širina */
-    padding: 16px; /* Smanjen padding */
-    font-size: 20px; /* Blago smanjen font */
-    font-weight: 700;
-    background: #2ecc71;
-    margin-top: 25px; /* Blago smanjen razmak */
-    text-align: center;
-    align-self: center;
-  }
-  
-  .save-button:hover {
-    background: #27ae60;
-  }
-  
-  .button-container {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-  }
+/* Page background to match Home and Header */
+.record-wrapper {
+  position: relative;
+  min-height: calc(100vh - 72px);
+  background: url('/assets/skola2.jpg') center/cover no-repeat fixed;
+}
+.overlay { position: absolute; inset: 0; background: rgba(20, 24, 38, 0.55); }
+
+/* Content area */
+.content { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 28px 20px 40px; color: #e9eefc; }
+.page-title h1 { margin: 0 0 8px; font-size: 28px; font-weight: 800; }
+.page-title p { margin: 0 0 16px; font-size: 13px; color: #c9d3e0; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.page-title .dot { opacity: .6; }
+.page-title .meta strong { color: #fff; }
+
+/* Grid panels */
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.panel {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(4px);
+  padding: 16px;
+}
+
+/* Fields */
+.field { margin-bottom: 14px; }
+.field label { display: block; margin-bottom: 6px; font-weight: 700; color: #fff; }
+.field input, .field textarea, select {
+  width: 100%;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.18);
+  color: #fff;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 14px;
+  outline: none;
+}
+.field textarea { resize: vertical; min-height: 120px; }
+
+.inline-field { margin-bottom: 10px; }
+.add-absent { display: grid; grid-template-columns: 1fr auto; gap: 8px; }
+
+/* Table */
+.table-wrap { overflow: auto; border-radius: 10px; }
+table { width: 100%; border-collapse: collapse; }
+thead th { text-align: left; font-size: 13px; padding: 10px 12px; background: rgba(255,255,255,0.12); color: #fff; }
+tbody td { padding: 10px 12px; border-top: 1px solid rgba(255,255,255,0.14); color: #e9eefc; }
+.actions-cell { text-align: right; }
+
+/* Buttons */
+.btn { border-radius: 18px; padding: 9px 14px; font-size: 13px; cursor: pointer; border: 1px solid transparent; transition: background .2s ease, border-color .2s ease, color .2s ease; }
+.btn.primary { background: #4461ff; color: #fff; border-color: #4461ff; }
+.btn.primary:hover { background: #3650d1; border-color: #3650d1; }
+.btn.danger { background: #ff4d4f; color: #fff; border-color: #ff4d4f; }
+.btn.danger:hover { background: #d93b3d; border-color: #d93b3d; }
+.btn.xl { padding: 12px 20px; font-size: 14px; }
+
+.form-actions { display: flex; justify-content: center; margin-top: 16px; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .grid { grid-template-columns: 1fr; }
+}
+
+/* Ensure dropdown options are readable */
+.field select option, select option {
+  color: #111;
+  background: #ffffff;
+}
+.field select option:checked, select option:checked {
+  background: #e6eeff;
+  color: #111;
+}
+.field select optgroup, select optgroup {
+  color: #111;
+  background: #ffffff;
+}

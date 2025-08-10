@@ -1,65 +1,71 @@
-<div class="main-container">
-  <!-- Leva kolona - Upis časa -->
-  <div class="left-container">
-    <h1>Upis časa</h1>
+<div class="record-wrapper">
+  <div class="overlay"></div>
 
-    <div>
-      <label for="teacherName">Ime nastavnika:</label>
-      <span id="teacherName">{{ teacherName }}</span>
+  <section class="content">
+    <header class="page-title">
+      <h1>Upis časa</h1>
+      <p>
+        <span class="meta"><strong>Nastavnik:</strong> {{ teacherName }}</span>
+        <span class="dot">•</span>
+        <span class="meta"><strong>Predmet:</strong> {{ subjectName }}</span>
+        <span class="dot">•</span>
+        <span class="meta"><strong>Odeljenje:</strong> {{ clas.grade }}-{{ clas.number }}</span>
+        <span class="dot">•</span>
+        <span class="meta"><strong>Datum:</strong> {{ todayDate }}</span>
+      </p>
+    </header>
+
+    <div class="grid">
+      <!-- Levo: Upis časa -->
+      <div class="panel">
+        <div class="field">
+          <label for="classOrdinalNumber">Redni broj časa</label>
+          <input type="number" id="classOrdinalNumber" name="classOrdinalNumber" max="7" min="0" [(ngModel)]="classOrdinalNumber" />
+        </div>
+
+        <div class="field">
+          <label for="lessonDescription">Opis časa</label>
+          <textarea id="lessonDescription" name="lessonDescription" rows="8" [(ngModel)]="curriculum" placeholder="Npr. Obrađena lekcija, zadaci za domaći, ključne napomene..."></textarea>
+        </div>
+      </div>
+
+      <!-- Desno: Odsutni učenici -->
+      <div class="panel">
+        <h3>Odsutni učenici</h3>
+
+        <div class="inline-field">
+          <label for="studentSelect">Izaberi učenika</label>
+          <div class="add-absent">
+            <select id="studentSelect" [(ngModel)]="selectedStudent">
+              <option *ngFor="let st of students" [ngValue]="st">{{ st.firstname }} {{ st.lastname }}</option>
+            </select>
+            <button class="btn primary" (click)="AddAbsence()">Dodaj</button>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Ime i prezime</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let st of absentStudents">
+                <td>{{ st.firstname }} {{ st.lastname }}</td>
+                <td class="actions-cell">
+                  <button class="btn danger" (click)="removeAbsence(st)">Ukloni</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
 
-    <div>
-      <label for="subjectName">Naziv predmeta:</label>
-      <span id="subjectName">{{ subjectName }}</span>
+    <div class="form-actions">
+      <button class="btn xl primary" (click)="submit()">Sačuvaj</button>
     </div>
-
-    <div>
-      <label for="className">Odeljenje:</label>
-      <span id="className">{{ clas.grade }}-{{ clas.number }}</span>
-    </div>
-
-    <div>
-      <label for="classOrdinalNumber">Redni broj časa:</label>
-      <input type="number" id="classOrdinalNumber" name="classOrdinalNumber" max="7" min="0" [(ngModel)]="classOrdinalNumber">
-    </div>
-
-    <div>
-      <label for="date">Datum:</label>
-      <span id="date">{{ todayDate }}</span>
-    </div>
-
-    <div>
-      <label for="lessonDescription">Opis časa:</label>
-      <textarea id="lessonDescription" name="lessonDescription" rows="4" cols="50" [(ngModel)]="curriculum"></textarea>
-    </div>
-  </div>
-
-  <!-- Desna kolona - Odsutni studenti -->
-  <div class="right-container">
-    <h3>Odsutni učenici</h3>
-
-    <label for="studentSelect">Izaberi odsutnog učenika:</label>
-    <select id="studentSelect" [(ngModel)]="selectedStudent">
-      <option *ngFor="let st of students" [ngValue]="st">
-        {{ st.firstname }} {{ st.lastname }}
-      </option>
-    </select>
-    <button (click)="AddAbsence()">Dodaj u odsutne</button>
-
-    <table>
-      <tr>
-        <th>Ime i prezime</th>
-        <th></th>
-      </tr>
-      <tr *ngFor="let st of absentStudents">
-        <td>{{ st.firstname }} {{ st.lastname }}</td>
-        <td><button (click)="removeAbsence(st)">Ukloni</button></td>
-      </tr>
-    </table>
-  </div>
-</div>
-
-<!-- Dugme "Sačuvaj" centrirano -->
-<div class="button-container">
-  <button class="save-button" (click)="submit()">Sačuvaj</button>
+  </section>
 </div>

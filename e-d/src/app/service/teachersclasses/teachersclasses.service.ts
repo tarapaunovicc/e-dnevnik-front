@@ -25,7 +25,6 @@ export class TeachersclassesService {
   // }
 
   public findByTeacherUsername(username: string): Observable<TeachersClasses[]> {
-    console.log(this.http.get<TeachersClasses[]>(`${this.API}/teachersclasses/${username}`));
     return this.http.get<TeachersClasses[]>(`${this.API}/teachersclasses/${username}`)
   }
   

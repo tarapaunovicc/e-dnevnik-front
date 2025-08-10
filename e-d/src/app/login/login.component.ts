@@ -19,6 +19,7 @@ export class LoginComponent {
   user:User=new User();
   public showPassword = false;
   teacher?: Teacher;
+  public isCyrillic = false;
   
   constructor(
     private router: Router, 
@@ -30,6 +31,10 @@ export class LoginComponent {
       if (this.authService.currentUser && this.authService.currentUser.value) {
         this.router.navigate(['/user'], { replaceUrl: true });
       }
+    }
+
+    toggleScript(): void {
+      this.isCyrillic = !this.isCyrillic;
     }
 
    async submit() {
@@ -51,6 +56,6 @@ export class LoginComponent {
       }else{
         this.notificationService.addNotification("Wrong username or password!");
       }     
-    });
+    });
   }
 }

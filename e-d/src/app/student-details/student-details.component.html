@@ -1,49 +1,76 @@
-<div class="main-container">
-  <!-- Ocene - Leva strana -->
-  <div class="left-container">
-    <table>
-      <thead>
-        <tr>
-          <th>Predmet</th>
-          <th>Ocene</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let subjectName of getSubjectNames()">
-          <td>{{ subjectName }}</td>
-          <td>{{ uniqueSubjects[subjectName].join(', ') || '-' }}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+<div class="details-wrapper">
+  <div class="overlay"></div>
 
-<div class="right-container">
-  <table>
-    <thead>
-      <tr>
-        <th>Datum</th>
-        <th>Naziv predmeta</th>
-        <th>Redni broj časa</th>
-        <th>Opravdano</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let absence of paginatedAbsences">
-        <td>{{ absence.lesson.date }}</td>
-        <td>{{ absence.lesson.teacher.subject.name }}</td>
-        <td>{{ absence.lesson.classOrdinalNumber }}</td>
-        <td>
-          <input type="checkbox" [(ngModel)]="absence.excused" [checked]="absence.excused" (change)="onCheckboxChange(absence, 'justified')" [disabled]="absence.isfinal">
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <section class="content">
+    <header class="page-title">
+      <h1>Profil učenika</h1>
+      <p>
+        <span class="meta"><strong>Učenik:</strong> {{ student?.firstname }} {{ student?.lastname }}</span>
+        <span class="dot" *ngIf="student">•</span>
+        <span class="meta" *ngIf="student"><strong>Korisničko ime:</strong> {{ student?.username }}</span>
+      </p>
+    </header>
 
-  <div class="pagination">
-    <button (click)="prevPage()" [disabled]="currentPage === 1">Prethodna</button>
-    <span>Strana {{ currentPage }} od {{ Math.ceil(absences.length / itemsPerPage) }}</span>
-    <button (click)="nextPage()" [disabled]="(currentPage * itemsPerPage) >= absences.length">Sledeća</button>
-  </div>
+    <div class="grid">
+      <!-- Levo: ocene po predmetima -->
+      <div class="panel">
+        <h3>Ocene po predmetima</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Predmet</th>
+                <th>Ocene</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let subjectName of getSubjectNames()">
+                <td>{{ subjectName }}</td>
+                <td>{{ uniqueSubjects[subjectName].join(', ') || '-' }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
 
-  <button (click)="saveAbsences()">Sačuvaj</button>
+      <!-- Desno: odsustva sa paginacijom -->
+      <div class="panel">
+        <h3>Odsustva</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Datum</th>
+                <th>Predmet</th>
+                <th>Čas</th>
+                <th>Opravdano</th>
+              </tr>
+            </thead>
+            <tbody> 
+              <tr *ngFor="let absence of paginatedAbsences">
+                <td>{{ absence.lesson.date | date:'dd.MM.yyyy' }}</td>
+                <td>{{ absence.lesson.teacher.subject.name }}</td>
+                <td>{{ absence.lesson.classOrdinalNumber }}</td>
+                <td class="actions-cell">
+                  <!-- <input type="checkbox" [(ngModel)]="absence.excused" [checked]="absence.excused" (change)="onCheckboxChange(absence, 'justified')" [disabled]="absence.isfinal" /> -->
+                  <input type="checkbox" [checked]="absence.excused" (change)="onCheckboxChange(absence)" [disabled]="absence.isfinal">
+
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="pagination">
+          <button class="btn" (click)="prevPage()" [disabled]="currentPage === 1">Prethodna</button>
+          <span>Strana {{ currentPage }} od {{ Math.ceil(absences.length / itemsPerPage) }}</span>
+          <button class="btn" (click)="nextPage()" [disabled]="(currentPage * itemsPerPage) >= absences.length">Sledeća</button>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn primary" (click)="saveAbsences()">Sačuvaj</button>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>

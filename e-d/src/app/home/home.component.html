@@ -1,13 +1,35 @@
-<div *ngFor="let tc of teachersClasses">
-    <div class="odeljenja">
-      <div class="labels">
-        <label>Predmet: {{teacher?.subject?.name || ""}}</label>
-        <label>Odeljenje: {{tc.cl.grade}}-{{tc.cl.number}}</label>
-      </div>
-      <div class="buttons">
-        <button (click)="AddLesson(tc)">Upiši čas</button>
-        <button (click)="ViewStudents(tc)">Učenici</button>
+<div class="home-wrapper">
+  <div class="overlay"></div>
+
+  <section class="home-content">
+    <header class="hero">
+      <h1>Dobrodošli{{ teacher ? ", " + teacher.firstname + " " + teacher.lastname : "" }}</h1>
+      <p>Predmet: <strong>{{ teacher?.subject?.name }}</strong>. U nastavku su vaša odeljenja i brzi pristupi.</p>
+    </header>
+
+    <div class="class-grid">
+      <div class="class-card" *ngFor="let tc of teachersClasses">
+        <div class="card-head">
+          <div class="badge">
+            <span>{{ tc.cl.grade }}-{{ tc.cl.number }}</span>
+          </div>
+          <div class="title">Odeljenje {{ tc.cl.grade }}-{{ tc.cl.number }}</div>
+          <div class="subtitle">{{ teacher?.subject?.name }}</div>
+        </div>
+
+        <div class="card-body">
+          <div class="illustration" aria-hidden="true">
+            <svg viewBox="0 0 64 64" class="illus-svg"><path fill="currentColor" d="M6 10h52v6H6zM10 20h44v28H10zM6 50h52v4H6z" opacity=".25"/><path fill="currentColor" d="M12 24h14v4H12zm0 8h20v4H12zm0 8h12v4H12z"/></svg>
+          </div>
+          <p>Planirajte nastavu, vodite evidenciju i pregledajte listu učenika za odeljenje.</p>
+        </div>
+
+        <div class="card-actions">
+          <button class="btn primary" (click)="AddLesson(tc)">Upiši čas</button>
+          <button class="btn outline" (click)="ViewStudents(tc)">Učenici</button>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
+</div>
   

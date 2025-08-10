@@ -64,7 +64,7 @@ export class ClassRecordComponent {
       if (params['students']) {
         this.classid = params['students'];
       }
-
+      console.log("Provera: "+ this.classid);
       this.studentService.findByStudentClass(this.classid).subscribe(
         (students: Student[]) => {
           this.students = students;
@@ -100,7 +100,7 @@ export class ClassRecordComponent {
       response => {
         this.currentUser.setCurrentLesson(response);
         this.lesson=response;
-        this.router.navigate(['/students', this.lesson.cl.classId],{state:{classId:this.lesson.cl.classId}});
+        this.router.navigate(['/students', this.lesson.id.classid],{state:{classId:this.lesson.id.classid}});
         this.saveAbsences();
       },
       error => {

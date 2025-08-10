@@ -22,11 +22,20 @@ export class GradeService extends HttpClient{
   }
 
   public save(grade: Grade): Observable<Grade> {
-  
+    console.log(grade);
     return this.post<Grade>(`${this.API}/grades`, grade);
   }
 
   public findByStudentUsername(username: string) :Observable<Array<Grade>> {
     return this.get<Array<Grade>>(`${this.API}/grades/student/${username}`);
+  }
+
+  public getGradesByStudentAndTeacher(studentUsername: string, teacherUsername: string): Observable<Grade[]> {
+  const payload = {
+    studentusername: studentUsername,
+    teacherusername: teacherUsername
+  };
+  console.log(teacherUsername);
+  return this.post<Grade[]>(`${this.API}/grades/by-student-teacher`, payload);
   }
 }

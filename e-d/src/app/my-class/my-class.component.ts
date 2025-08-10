@@ -13,6 +13,7 @@ export class MyClassComponent {
 
   public students:Student[]=[];
   public classId:number=0;
+  public searchQuery: string = '';
   constructor(private route: ActivatedRoute, private router: Router, public currentUser: CurrentUser, 
     private studentService:StudentService) {}
     
@@ -35,8 +36,19 @@ export class MyClassComponent {
     )
   }
 
+  public get filteredStudents(): Student[] {
+    const q = this.searchQuery.trim().toLowerCase();
+    if (!q) return this.students;
+    return this.students.filter(s =>
+      `${s.firstname} ${s.lastname}`.toLowerCase().includes(q) ||
+      s.firstname.toLowerCase().includes(q) ||
+      s.lastname.toLowerCase().includes(q) ||
+      (s.username?.toLowerCase().includes(q))
+    );
+  }
+
   public viewDetails(st: Student){
-    this.router.navigate(['/details'] , { state: { user: st }});
+    this.router.navigate(['/details'] , { state: { user: st }});
   }
  
 }

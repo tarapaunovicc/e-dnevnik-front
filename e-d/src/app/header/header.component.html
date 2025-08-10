@@ -1,25 +1,43 @@
-<header>
+<header class="app-header">
   <div class="container">
-    <!-- Leva strana -->
+    <!-- Left: school name only (logo removed) -->
     <div class="left-section">
-      <img src="assets/skola-slika.png" alt="Logo" class="logo">
       <div class="school-name">
-        <span>Osnovna škola</span>
-        <span>"Jovan Jovanović Zmaj"</span>
-      </div>
-      <button (click)="goToUserPage()">Početna stranica</button>
-      <div *ngIf="hasClass()">
-        <button (click)="openMyClass()">Moje odeljenje</button>
+        <span class="school-type">Osnovna škola</span>
+        <span class="school-title">"Jovan Jovanović Zmaj"</span>
       </div>
     </div>
 
-    <!-- Desna strana -->
+    <!-- Center: navigation -->
+    <nav class="nav">
+      <button class="nav-btn primary" (click)="goToUserPage()">Početna</button>
+      <button class="nav-btn outline" *ngIf="hasClass()" (click)="openMyClass()">Moje odeljenje</button>
+    </nav>
+
+    <!-- Right: utilities -->
     <div class="right-section">
       <div class="location">
-        <img src="assets/whitelocation.png" alt="Logo" class="pin">
+        <img src="assets/whitelocation.png" alt="Lokacija" class="pin" />
         <span>Bulevar kralja Aleksandra 251, Beograd</span>
       </div>
-      <button class="logout-button" (click)="logout()">Logout</button>
+
+      <div class="actions">
+        <div class="search">
+          <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><path fill="currentColor" d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16a6.471 6.471 0 0 0 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+          <input type="text" placeholder="Pretraga" />
+        </div>
+        <button class="icon-btn" type="button" aria-label="Pomoć">
+          <svg viewBox="0 0 24 24" class="icon"><path fill="currentColor" d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2zm1 17h-2v-2h2v2zm1.07-7.75-.9.92C12.45 12.9 12 13.5 12 15h-2v-.5c0-1 .45-1.75 1.17-2.47l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></svg>
+        </button>
+        <button class="icon-btn" type="button" aria-label="Obaveštenja">
+          <svg viewBox="0 0 24 24" class="icon"><path fill="currentColor" d="M12 22a2 2 0 0 0 2-2H10a2 2 0 0 0 2 2zm6-6V9a6 6 0 1 0-12 0v7l-2 2v1h16v-1l-2-2z"/></svg>
+          <span class="badge">3</span>
+        </button>
+        <button class="avatar-btn" type="button" aria-label="Profil">
+          <span class="avatar-initials">JJ</span>
+        </button>
+        <button class="logout-button" (click)="logout()">Odjava</button>
+      </div>
     </div>
   </div>
 

@@ -1,49 +1,22 @@
-.ucenici, .odeljenja {
-    display: flex;
-    flex-direction: column; 
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 16px;
-    margin: 16px 0;
-    background-color: #f9f9f9;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
+.myclass-wrapper { position: relative; min-height: calc(100vh - 72px); background: url('/assets/skola2.jpg') center/cover no-repeat fixed; }
+.overlay { position: absolute; inset: 0; background: rgba(20, 24, 38, 0.55); }
 
-.labels {
-    margin-bottom: 12px;
-}
+.content { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 28px 20px 40px; color: #e9eefc; }
+.page-title h1 { margin: 0 0 8px; font-size: 28px; font-weight: 800; }
+.page-title p { margin: 0 0 16px; font-size: 13px; color: #c9d3e0; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.page-title .dot { opacity: .6; }
 
-.labels label {
-    display: block;
-    font-size: 16px;
-    font-weight: 500;
-    margin-bottom: 4px;
-    color: #333;
-}
+.students-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+.student-card { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; box-shadow: 0 10px 24px rgba(0,0,0,0.18); backdrop-filter: blur(4px); padding: 16px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+.avatar { width: 56px; height: 56px; border-radius: 50%; background: rgba(255,255,255,0.15); display: grid; place-items: center; color: #fff; font-weight: 800; letter-spacing: .5px; margin-bottom: 10px; }
+.name { font-size: 16px; font-weight: 700; color: #fff; }
+.meta.small { font-size: 12px; color: #c9d3e0; margin-top: 4px; }
+.actions { margin-top: 12px; }
 
-.buttons {
-    display: flex;
-    gap: 12px;
-}
+.btn { border-radius: 18px; padding: 8px 14px; font-size: 13px; cursor: pointer; border: 1px solid transparent; transition: background .2s ease, border-color .2s ease, color .2s ease; }
+.btn.outline { background: transparent; color: #fff; border-color: rgba(255,255,255,0.35); }
+.btn.outline:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.6); }
 
-.buttons button {
-    padding: 8px 16px;
-    font-size: 14px;
-    font-weight: 500;
-    color: #fff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.buttons button:hover {
-    background-color: #0056b3;
-}
-
-.buttons button:active {
-    background-color: #004494;
-}
+.search { display: flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.14); padding: 6px 10px; border-radius: 18px; max-width: 420px; border: 1px solid rgba(255,255,255,0.18); }
+.search .icon { width: 18px; height: 18px; color: #d7def0; }
+.search input { background: transparent; border: none; outline: none; color: #fff; font-size: 13px; width: 100%; }

@@ -1,44 +1,73 @@
-<div class="main-container">
-  <div class="left-container">
-    <h3>{{ this.lesson?.teacher?.subject?.name }}</h3>
-    <table class="grades-table">
-      <thead>
-        <tr>
-          <th>Učenik</th>
-          <th>Ocene</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let student of students">
-          <td>{{ student.firstname }} {{ student.lastname }}</td>
-          <td>
-            {{ student?.grades?.length ? getTeacherGrades(student).join(', ') : '-' }}
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+<div class="students-wrapper">
+  <div class="overlay"></div>
 
+  <section class="content">
+    <header class="page-title with-actions">
+      <div class="left">
+        <h1>Učenici i ocene</h1>
+        <p>
+          <span class="meta"><strong>Predmet:</strong> {{ this.lesson?.teacher?.subject?.name }}</span>
+          <span class="dot">•</span>
+          <span class="meta">Evidencija ocena i brzi unos novih ocena</span>
+        </p>
+      </div>
+      <!-- <div class="header-actions">
+        <button class="btn outline" (click)="goBackToMyClass()">← Nazad u odeljenje</button>
+      </div> -->
+    </header>
 
-  <!-- Desna strana sa formom -->
-  <div class="right-container">
-    <h3>Upiši novu ocenu</h3>
-    
-    <div class="form-section">
-      <label for="studentSelect">Izaberite studenta:</label>
-      <select id="studentSelect" [(ngModel)]="selectedStudent">
-        <option *ngFor="let student of presentStudents" [ngValue]="student">
-          {{ student.firstname }} {{ student.lastname }}
-        </option>
-      </select>
-      
-      <label for="gradeSelect">Izaberite ocenu:</label>
-      <select id="gradeSelect" [(ngModel)]="selectedGrade">
-        <option *ngFor="let grade of [1, 2, 3, 4, 5]" [value]="grade">{{ grade }}</option>
-      </select>
-
-      <button (click)="addNewGrade()">Upiši ocenu</button>
+    <div class="search">
+      <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><path fill="currentColor" d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16a6.471 6.471 0 0 0 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+      <input type="text" [(ngModel)]="searchQuery" placeholder="Pretraga učenika (ime, prezime, korisničko ime)" />
     </div>
-  </div>
+
+    <div class="grid">
+      <!-- Levo: tabela ocena -->
+      <div class="panel">
+        <h3>Lista učenika</h3>
+        <div class="table-wrap">
+          <table class="grades-table">
+            <thead>
+              <tr>
+                <th>Učenik</th>
+                <th>Ocene</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let student of filteredStudents">
+                <td>{{ student.firstname }} {{ student.lastname }}</td>
+                <td>
+                  <ng-container *ngIf="getGrades(student).length; else noGrades">
+                    {{ getGrades(student).join(', ') }}
+                  </ng-container>
+                  <ng-template #noGrades>-</ng-template>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Desno: unos ocene -->
+      <div class="panel">
+        <h3>Upiši novu ocenu</h3>
+        <div class="field">
+          <label for="studentSelect">Izaberite studenta</label>
+          <select id="studentSelect" [(ngModel)]="selectedStudent">
+            <option *ngFor="let student of filteredStudents" [ngValue]="student">{{ student.firstname }} {{ student.lastname }}</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="gradeSelect">Izaberite ocenu</label>
+          <select id="gradeSelect" [(ngModel)]="selectedGrade">
+            <option *ngFor="let grade of [1,2,3,4,5]" [value]="grade">{{ grade }}</option>
+          </select>
+        </div>
+        <div class="form-actions">
+          <button class="btn primary" (click)="addNewGrade()">Upiši ocenu</button>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
 

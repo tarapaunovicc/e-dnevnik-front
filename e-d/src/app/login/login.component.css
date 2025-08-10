@@ -1,89 +1,135 @@
-/* General styles */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-
-  }
-.ccc{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width:100%;
-
+/* Page layout */
+:host {
+  display: block;
 }
-  
-  /* Container for the form */
-  form {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
-  }
-  
-  /* Header style */
-  h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333333;
-  }
-  
-  /* Label styles */
-  label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: #333333;
-  }
-  
-  /* Input field styles */
-  input[type="text"],
-  input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #cccccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    font-size: 14px;
-  }
-  
-  /* Button styles */
-  button[type="submit"] {
-    width: 100%;
-    padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  button[type="submit"]:hover {
-    background-color: #45a049;
-  }
-  
-  /* Paragraph styles */
-  p {
-    text-align: center;
-    margin-top: 20px;
-    color: #333333;
-  }
-  
-  /* Link styles */
-  a {
-    color: #4CAF50;
-    text-decoration: none;
-  }
-  
-  a:hover {
-    text-decoration: underline;
-  }
+
+.login-page {
+  display: grid;
+  grid-template-columns: 1fr minmax(380px, 480px);
+  height: 100vh;
+  width: 100%;
+}
+
+/* Left visual panel */
+.left-panel {
+  position: relative;
+  background: url('/assets/skola2.jpg') center/cover no-repeat;
+  filter: none;
+}
+
+/* Dark glass card over image to mimic hero */
+.brand-card {
+  position: absolute;
+  left: 10%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.4);
+  padding: 32px 40px;
+  border-radius: 6px;
+  color: #fff;
+}
+
+.brand-lines { display: flex; align-items: baseline; gap: 14px; }
+.brand-moj { font-size: 28px; font-weight: 700; opacity: 0.95; }
+.brand-esd { font-size: 64px; font-weight: 800; letter-spacing: 1px; }
+.brand-subtitle { margin-top: 10px; font-size: 16px; opacity: 0.9; }
+
+/* Right login panel */
+.right-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(245, 247, 250, 0.6);
+}
+
+.login-card {
+  position: relative;
+  background: #fff;
+  width: 88%;
+  max-width: 420px;
+  padding: 32px 36px 20px;
+  border-radius: 8px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.lang-switch {
+  position: absolute;
+  right: 18px;
+  top: 14px;
+  font-size: 12px;
+  color: #0a58ca;
+  cursor: pointer;
+  user-select: none;
+}
+
+.title {
+  margin: 8px 0 18px;
+  font-size: 28px;
+  font-weight: 800;
+  color: #1f2a44;
+}
+
+form { display: flex; flex-direction: column; gap: 6px; }
+
+.field-label {
+  font-size: 12px;
+  color: #5b6b82;
+  text-transform: none;
+  margin-top: 6px;
+}
+
+.text-input {
+  border: none;
+  border-bottom: 2px solid #c9d3e0;
+  padding: 10px 4px 8px;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.text-input:focus { border-bottom-color: #1e63ff; }
+
+.underline { background: transparent; }
+
+.forgot-link {
+  margin: 6px 0 8px auto;
+  background: transparent;
+  border: none;
+  color: #1e63ff;
+  font-size: 12px;
+  padding: 0;
+  cursor: default; /* inert as requested */
+}
+
+.submit-btn {
+  align-self: flex-start;
+  margin-top: 2px;
+  background: #1e63ff;
+  color: #fff;
+  border: none;
+  border-radius: 22px;
+  padding: 10px 18px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.02s ease;
+}
+
+.submit-btn:hover { background: #184fcc; }
+.submit-btn:active { transform: translateY(1px); }
+
+.legal {
+  margin: 14px 4px 0;
+  font-size: 11px;
+  color: #66758a;
+  line-height: 1.4;
+}
+
+/* Mobile adjustments */
+@media (max-width: 920px) {
+  .login-page { grid-template-columns: 1fr; }
+  .left-panel { display: none; }
+  .right-panel { background: url('/assets/skola2.jpg') center/cover no-repeat; }
+  .login-card { background: rgba(255, 255, 255, 0.95); }
+}
   

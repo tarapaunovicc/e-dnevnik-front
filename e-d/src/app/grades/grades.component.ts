@@ -28,13 +28,9 @@ export class GradesComponent {
  
   ngOnInit(){
     this.getStudent();
-
     this.teacher=this.currentUser.getCurrentTeacher();
-
-    this.getGrades();
-
-
   }
+  /*
   getGrades() {
     if(this.student) this.gradeService.findByStudentUsername(this.student?.username).subscribe(
       (data: Grade[]) => {
@@ -45,11 +41,13 @@ export class GradesComponent {
         console.error('Error fetching student subjects', error);
       });
   }
-  
+  */
 
   public getStudent() {
     this.student=history.state?.student;
+        //this.getGrades(this.student);
   }
+
 
   //ovo je kod za ceo dnevnik
   // processGrades(): void {
@@ -114,4 +112,15 @@ export class GradesComponent {
       console.warn('Nije izabrana ocena!');
     }
   }
+  getGrades(student: Student): void {
+  if (!this.teacher || !student.username) {
+    return;
+  }
+/*
+  this.gradeService.getGradesByStudentAndTeacher(student.username, this.teacher.username)
+    .subscribe((grades: Grade[]) => {
+      this.filteredGrades = grades.map(g => g.grade);
+    });
+    */
+}
 }

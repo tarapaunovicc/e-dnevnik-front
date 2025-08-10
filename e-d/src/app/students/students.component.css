@@ -1,117 +1,52 @@
-body {
-  font-family: 'Poppins', sans-serif;
-  background: #f4f7f9;
-  margin: 0;
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100vh;
-  justify-content: space-between;
-}
+.students-wrapper { position: relative; min-height: calc(100vh - 72px); background: url('/assets/skola2.jpg') center/cover no-repeat fixed; }
+.overlay { position: absolute; inset: 0; background: rgba(20, 24, 38, 0.55); }
 
-.main-container {
-  display: flex;
-  gap: 40px;
-  width: 100%;
-  flex-grow: 1;
-}
+.content { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 28px 20px 40px; color: #e9eefc; }
+.page-title h1 { margin: 0 0 8px; font-size: 28px; font-weight: 800; }
+.page-title p { margin: 0 0 16px; font-size: 13px; color: #c9d3e0; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.page-title .dot { opacity: .6; }
+.page-title.with-actions { display: flex; justify-content: space-between; align-items: end; gap: 12px; }
+.page-title .left { flex: 1; }
+.header-actions { display: flex; gap: 8px; }
 
-.left-container, .right-container {
-  flex: 1;
-}
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.panel { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; box-shadow: 0 10px 24px rgba(0,0,0,0.18); backdrop-filter: blur(4px); padding: 16px; }
 
-h1, h3 {
-  text-align: center;
-  font-size: 24px;
-  color: #2c3e50;
-  margin-bottom: 25px;
-}
+/* Table */
+.table-wrap { overflow: auto; border-radius: 10px; }
+.grades-table { width: 100%; border-collapse: collapse; }
+.grades-table thead th { text-align: left; font-size: 13px; padding: 10px 12px; background: rgba(255,255,255,0.12); color: #fff; }
+.grades-table tbody td { padding: 10px 12px; border-top: 1px solid rgba(255,255,255,0.14); color: #e9eefc; }
 
-label {
-  display: block;
-  font-weight: 700;
-  color: #34495e;
-  font-size: 18px;
-  margin-bottom: 8px;
-}
+/* Fields and buttons */
+.field { margin-bottom: 12px; }
+.field label { display: block; margin-bottom: 6px; font-weight: 700; color: #fff; }
+.field select { width: 100%; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.18); color: #fff; border-radius: 10px; padding: 10px 12px; font-size: 14px; outline: none; }
 
-span, input, textarea, select {
-  display: block;
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  font-size: 17px;
-  background: #f9fafc;
-  margin-bottom: 12px;
-}
+.form-actions { display: flex; justify-content: flex-start; }
+.btn { border-radius: 18px; padding: 9px 14px; font-size: 13px; cursor: pointer; border: 1px solid transparent; transition: background .2s ease, border-color .2s ease, color .2s ease; }
+.btn.primary { background: #4461ff; color: #fff; border-color: #4461ff; }
+.btn.primary:hover { background: #3650d1; border-color: #3650d1; }
+.btn.outline { background: transparent; color: #fff; border-color: rgba(255,255,255,0.35); border: 1px solid rgba(255,255,255,0.35); }
+.btn.outline:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.6); }
 
-textarea {
-  resize: none;
-}
+.search { display: flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.08); padding: 6px 10px; border-radius: 18px; max-width: 420px; }
+.search .icon { width: 18px; height: 18px; color: #c9d3e0; }
+.search input { background: transparent; border: none; outline: none; color: #fff; font-size: 13px; width: 100%; }
 
-button {
-  display: block;
-  width: 100%;
-  padding: 12px;
-  background:  #2ecc71;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  font-size: 17px;
-  font-weight: 700;
-  cursor: pointer;
-  margin-top: 12px;
-}
+@media (max-width: 900px) { .grid { grid-template-columns: 1fr; } .page-title.with-actions { flex-direction: column; align-items: flex-start; } }
 
-button:hover {
-  background: #27ae60;
+/* Ensure dropdown options are readable */
+.field select option, select option {
+  color: #111;
+  background: #ffffff;
 }
-
-.right-container button {
-  margin-bottom: 20px;
+.field select option:checked, select option:checked {
+  background: #e6eeff;
+  color: #111;
 }
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-th, td {
-  padding: 15px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-  font-size: 17px;
-}
-
-th {
-  background: #2ecc71;
-  color: white;
-}
-
-tr:nth-child(even) {
-  background: #f8f9fa;
-}
-
-.save-button {
-  width: 320px;
-  padding: 16px;
-  font-size: 20px;
-  font-weight: 700;
-  background: #2ecc71;
-  margin-top: 25px;
-  text-align: center;
-  align-self: center;
-}
-
-.save-button:hover {
-  background: #27ae60;
-}
-
-.button-container {
-  display: flex;
-  justify-content: center;
-  width: 100%;
+.field select optgroup, select optgroup {
+  color: #111;
+  background: #ffffff;
 }
 

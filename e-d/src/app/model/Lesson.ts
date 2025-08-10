@@ -7,9 +7,9 @@ export class Lesson{
     classOrdinalNumber!:number
     curriculum?:string;
     teacher!:Teacher
-    cl!:Class
+    cl!:Class    
     
-}
+} 
 export class LessonPK{
     lessonid!:number
     classid!:number

@@ -83,6 +83,7 @@ export class HeaderComponent {
   }
   logout(){
     this.authService.logout$().subscribe(() => {
+      console.log("ulazi u logout");
       this.router.navigate(['']).then(() => {
         window.location.reload(); 
       });

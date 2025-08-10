@@ -27,7 +27,7 @@ export class StudentService  {
   }
 
   public findByStudentClass(cl: number) : Observable<Array<Student>> {
-    console.log("udje u servis");
+    console.log("udje u servis "+ cl);
     return this.http.get<Array<Student>>(`${this.API}/students/class/${cl}`);
   }
 }

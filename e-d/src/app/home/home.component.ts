@@ -6,6 +6,7 @@ import { TeachersClasses } from '../model/TeachersClasses';
 import { TeacherService } from '../service/teacher/teacher.service';
 import { Teacher } from '../model/Teacher';
 import { Class } from '../model/Class';
+import { TeachersclassesService } from '../service/teachersclasses/teachersclasses.service';
 
 
 @Component({
@@ -21,24 +22,14 @@ export class HomeComponent {
   teacher?:Teacher | null;
   username:string="";
   constructor(private activatedRoute:ActivatedRoute, private teacherService: TeacherService, private currentUser: CurrentUser,
-    private router: Router
+    private router: Router, private teachersclassesService: TeachersclassesService
   ){}
   ngOnInit(): void {
       this.teacher = this.currentUser.getCurrentTeacher();
-      console.log("Current user je: " + JSON.stringify(this.teacher, null, 2));
-      this.teachersClasses=this.teacher?.classes ??[];
-      console.log("Teachers classes are: " + JSON.stringify(this.teachersClasses, null, 2));
-      /*
-      console.log(savedTeacher?.username);
-      if(this.username)
-      this.teacherService.findById(savedTeacher?.username).subscribe(
-        (teacher: Teacher) => {     
-          this.teacher = teacher;    
-          this.currentUser.setCurrentTeacher(teacher);
-          this.teachersClasses = this.teacher.classes ?? [];
-        }
-      )  
-        */
+      //this.teachersClasses=this.teacher?.classes ??[];
+      if (this.teacher && this.teacher.username) {
+        this.LoadTeachersClasses(this.teacher.username);
+      }
   }
 
   AddLesson(tc:TeachersClasses):void{
@@ -47,4 +38,15 @@ export class HomeComponent {
   ViewStudents(tc:TeachersClasses):void{
     this.router.navigate(['/students', tc.cl.classId], {state: {classId: tc.cl.classId}})
   }
+  LoadTeachersClasses(username: string): void {
+    this.teachersclassesService.findByTeacherUsername(username).subscribe({
+            next: (response) => {
+        this.teachersClasses = response;
+    },
+    error: (error) => {
+        console.error('Greška pri učitavanju teachersClasses:', error);
+        this.teachersClasses = [];
+    }
+});
+}
 }

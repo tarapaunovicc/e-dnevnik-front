@@ -1,4 +1,51 @@
-<h2>Login</h2>
+<div class="login-page">
+  <div class="left-panel">
+    <div class="brand-card">
+      <div class="brand-lines">
+        <span class="brand-moj">{{ isCyrillic ? 'мој' : 'moj' }}</span>
+        <span class="brand-esd">{{ isCyrillic ? 'есДневник' : 'esDnevnik' }}</span>
+      </div>
+      <div class="brand-subtitle">{{ isCyrillic ? 'портал за ученике и родитеље' : 'portal za učenike i roditelje' }}</div>
+    </div>
+  </div>
+
+  <div class="right-panel">
+    <div class="login-card">
+      <div class="lang-switch" role="button" (click)="toggleScript()" tabindex="0">{{ isCyrillic ? 'latinica' : 'ћирилица' }}</div>
+      <h1 class="title">{{ isCyrillic ? 'Пријава' : 'Prijava' }}</h1>
+
+      <form (ngSubmit)="submit()" autocomplete="on" novalidate>
+        <label for="username" class="field-label">{{ isCyrillic ? 'корисничко име' : 'korisničko ime' }}</label>
+        <input
+          id="username"
+          name="username"
+          type="text"
+          class="text-input underline"
+          [(ngModel)]="user.username"
+          required
+          autocomplete="username" />
+
+        <label for="password" class="field-label">{{ isCyrillic ? 'лозинка' : 'lozinka' }}</label>
+        <input
+          id="password"
+          name="password"
+          [type]="showPassword ? 'text' : 'password'"
+          class="text-input underline"
+          [(ngModel)]="user.password"
+          required
+          autocomplete="current-password" />
+
+        <button class="forgot-link" type="button" tabindex="0">{{ isCyrillic ? 'заборављена лозинка' : 'zaboravljena lozinka' }}</button>
+
+        <button class="submit-btn" type="submit">{{ isCyrillic ? 'ПРИЈАВИ СЕ' : 'PRIJAVI SE' }}</button>
+      </form>
+
+      <p class="legal">{{ isCyrillic ? 'Сваки неовлашћени покушај приступа кажњава се према кривичном закону Републике Србије.' : 'Svaki neovlašćeni pokušaj pristupa kažnjava se prema krivičnom zakonu Republike Srbije.' }}</p>
+    </div>
+  </div>
+</div>
+
+<!-- <h2>Login</h2>
 <div class="ccc">
   <form action="/login" method="POST">
     <label for="username">Username:</label><br>
@@ -13,5 +60,4 @@
     <button type="submit" (click) = "submit()">Login</button>
     
     
-  </form>
-</div>
+  </form> -->
